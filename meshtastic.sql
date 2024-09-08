@@ -19,12 +19,15 @@
 -- Table structure for table `neighborinfo`
 --
 
+USE meshtastic;
+
 DROP TABLE IF EXISTS `neighborinfo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `neighborinfo` (
   `channel` int(1) DEFAULT NULL,
   `from` bigint(10) DEFAULT NULL,
+  `hop_start` int(2) DEFAULT NULL,
   `hops_away` int(2) DEFAULT NULL,
   `id` bigint(10) DEFAULT NULL,
   `payload_last_sent_by_id` bigint(10) DEFAULT NULL,
@@ -60,12 +63,14 @@ DROP TABLE IF EXISTS `nodeinfo`;
 CREATE TABLE `nodeinfo` (
   `channel` int(1) DEFAULT NULL,
   `from` bigint(10) DEFAULT NULL,
+  `hop_start` int(2) DEFAULT NULL,
   `hops_away` int(2) DEFAULT NULL,
   `id` bigint(10) DEFAULT NULL,
   `payload_hardware` int(10) DEFAULT NULL,
   `payload_id` varchar(20) DEFAULT NULL,
   `payload_longname` varchar(255) DEFAULT NULL,
   `payload_shortname` varchar(4) DEFAULT NULL,
+  `payload_role` varchar(20) DEFAULT NULL,
   `rssi` int(6) DEFAULT NULL,
   `sender` varchar(15) DEFAULT NULL,
   `snr` float DEFAULT NULL,
@@ -94,6 +99,7 @@ DROP TABLE IF EXISTS `position`;
 CREATE TABLE `position` (
   `channel` int(1) DEFAULT NULL,
   `from` bigint(10) DEFAULT NULL,
+  `hop_start` int(2) DEFAULT NULL,
   `hops_away` int(2) DEFAULT NULL,
   `id` bigint(10) DEFAULT NULL,
   `payload_altitude` int(6) DEFAULT NULL,
@@ -133,6 +139,7 @@ DROP TABLE IF EXISTS `telemetry`;
 CREATE TABLE `telemetry` (
   `channel` int(1) DEFAULT NULL,
   `from` bigint(10) DEFAULT NULL,
+  `hop_start` int(2) DEFAULT NULL,
   `hops_away` int(2) DEFAULT NULL,
   `id` bigint(10) DEFAULT NULL,
   `payload_air_util_tx` float DEFAULT NULL,
@@ -145,6 +152,13 @@ CREATE TABLE `telemetry` (
   `payload_gas_resistance` float DEFAULT NULL,
   `payload_relative_humidity` float DEFAULT NULL,
   `payload_temperature` float DEFAULT NULL,
+  `payload_iaq` float DEFAULT NULL,
+  `payload_lux` float DEFAULT NULL,
+  `payload_white_lux` float DEFAULT NULL,
+  `payload_wind_direction` float DEFAULT NULL,
+  `payload_wind_gust` float DEFAULT NULL,
+  `payload_wind_lull` float DEFAULT NULL,
+  `payload_wind_speed` float DEFAULT NULL,
   `rssi` int(6) DEFAULT NULL,
   `sender` varchar(15) DEFAULT NULL,
   `snr` float DEFAULT NULL,
@@ -173,6 +187,7 @@ DROP TABLE IF EXISTS `text`;
 CREATE TABLE `text` (
   `channel` int(1) DEFAULT NULL,
   `from` bigint(10) DEFAULT NULL,
+  `hop_start` int(2) DEFAULT NULL,
   `hops_away` int(2) DEFAULT NULL,
   `id` bigint(10) DEFAULT NULL,
   `payload_text` varchar(512) DEFAULT NULL,
@@ -204,6 +219,7 @@ DROP TABLE IF EXISTS `traceroute`;
 CREATE TABLE `traceroute` (
   `channel` int(1) DEFAULT NULL,
   `from` bigint(10) DEFAULT NULL,
+  `hop_start` int(2) DEFAULT NULL,
   `hops_away` int(2) DEFAULT NULL,
   `id` bigint(10) DEFAULT NULL,
   `payload_route` varchar(512) DEFAULT NULL,
